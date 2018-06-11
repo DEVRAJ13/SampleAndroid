@@ -2,7 +2,6 @@ package com.example.xornor_pc.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -12,7 +11,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.xornor_pc.myapplication.adapter.ListViewAdapter;
@@ -26,9 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     //the URL having the json data
     private static final String JSON_URL = "https://simplifiedcoding.net/demos/view-flipper/heroes.php";
@@ -38,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
     //the hero list where we will store all the hero objects after parsing json
     List<Hero> heroList;
-
-    private ImageLoader mImageLoader;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
                                 JSONObject heroObject = heroArray.getJSONObject(i);
 
                                 //creating a hero object and giving them the values from json object
-                                Hero hero = new Hero(heroObject.getString("name"),
-                                        heroObject.getString("imageurl"));
+                                Hero hero = new Hero(heroObject.getString("name"), heroObject.getString("imageurl"));
 
                                 //adding the hero to herolist
                                 heroList.add(hero);
@@ -94,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
                             //creating custom adapter object
                             ListViewAdapter adapter = new ListViewAdapter(heroList, getApplicationContext());
-
 
                             //adding the adapter to listview
                             listView.setAdapter(adapter);

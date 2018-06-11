@@ -1,43 +1,38 @@
 package com.example.xornor_pc.myapplication.model;
 
 public class Product {
-    private int id;
-    private String title;
-    private String shortdesc;
-    private double rating;
-    private double price;
-    private int image;
+    String name, author, title, description, url, urlToImage;
 
-    public Product(int id, String title, String shortdesc, double rating, double price, int image) {
-        this.id = id;
+    public Product(String name, String author, String title, String description, String url, String urlToImage) {
+        this.name = name;
+        this.author = author;
         this.title = title;
-        this.shortdesc = shortdesc;
-        this.rating = rating;
-        this.price = price;
-        this.image = image;
+        this.description = description;
+        this.url = url;
+        this.urlToImage = urlToImage;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getShortdesc() {
-        return shortdesc;
+    public String getDescription() {
+        return description;
     }
 
-    public double getRating() {
-        return rating;
+    public String getUrl() {
+        return url;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public int getImage() {
-        return image;
+    public String getUrlToImage() {
+        return urlToImage;
     }
 }
