@@ -1,10 +1,17 @@
 package com.example.xornor_pc.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -16,7 +23,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.xornor_pc.myapplication.Base.AppConstants;
 import com.example.xornor_pc.myapplication.adapter.ProductAdapter;
 import com.example.xornor_pc.myapplication.model.Product;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +33,8 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
     //the URL having the json data
     private static final String JSON_URL = AppConstants.baseUrl;
+
+    CardView cardView;
 
     //a list to store all the products
     List<Product> productList;
@@ -39,30 +47,19 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         productList = new ArrayList<>();
-
         recyclerView = findViewById(R.id.recyclerView);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
+//        LinearLayoutManager manager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
-
-
-
-
-//
-//        //getting the recyclerview from xml
-//        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        //initializing the productlist
-
-
-
-
         loadNewsData();
     }
+
+
+
+
+
 
     private void loadNewsData(){
         //creating a string request to send request to the url
@@ -98,7 +95,6 @@ public class HomeActivity extends AppCompatActivity {
 
                                 //adding some items to our list
                                 productList.add(news);
-
                                 Log.d("DATA", sourceObject.getString("name"));
                                 Log.d("DATA", newsObject.getString("author"));
                                 Log.d("DATA", newsObject.getString("title"));
@@ -106,7 +102,6 @@ public class HomeActivity extends AppCompatActivity {
                                 Log.d("DATA", newsObject.getString("url"));
                                 Log.d("DATA", newsObject.getString("urlToImage"));
                                 Log.d("DATA", newsObject.getString("publishedAt"));
-
                             }
 
                             //creating recyclerview adapter
