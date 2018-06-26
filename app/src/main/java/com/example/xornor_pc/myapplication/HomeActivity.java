@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         productList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
 //        LinearLayoutManager manager = new LinearLayoutManager(this);
-        RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
         loadNewsData();

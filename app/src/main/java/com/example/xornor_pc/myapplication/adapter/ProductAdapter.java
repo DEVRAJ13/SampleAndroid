@@ -49,7 +49,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         final Product product = productList.get(position);
         //binding the data with the viewholder views
         holder.textViewTitle.setText(product.getTitle());
-//        holder.textViewShortDesc.setText(product.getDescription());
+        holder.textViewShortDesc.setText(product.getDescription());
+          holder.pubName.setText(product.getName());
 //        holder.textViewRating.setText(String.valueOf(product.getRating()));
 //        holder.textViewPrice.setText(String.valueOf(product.getPrice()));
 //        holder.imageView.setImageDrawable(mCtx.getResources().product.getUrlToImage());
@@ -78,7 +79,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewTitle, textViewShortDesc, textViewRating, textViewPrice;
+        TextView textViewTitle, textViewShortDesc, pubName, textViewPrice;
         ImageView imageView;
 
         CardView card_view;
@@ -86,7 +87,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         public ProductViewHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
-//            textViewShortDesc = itemView.findViewById(R.id.textViewShortDesc);
+            textViewShortDesc = itemView.findViewById(R.id.textViewShortDesc);
+            pubName = itemView.findViewById(R.id.pub_name);
 //            textViewRating = itemView.findViewById(R.id.textViewRating);
 //            textViewPrice = itemView.findViewById(R.id.textViewPrice);
             imageView = itemView.findViewById(R.id.imageView);
